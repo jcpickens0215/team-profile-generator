@@ -1,0 +1,28 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "Generates an HTML page with a profile of your team members",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcpickens0215/team-profile-generator.git"
+  },
+  "author": "Justin Pickens",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jcpickens0215/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/jcpickens0215/team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.1",
+    "jest": "^27.0.6"
+  }
+}
