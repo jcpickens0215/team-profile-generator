@@ -1,5 +1,3 @@
-// Do we need Employee.js?
-
 // This function creates an array of strings,
 // each of those strings containing HTML filled
 // in with data from the each Employee object in
