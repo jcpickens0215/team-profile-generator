@@ -1,6 +1,5 @@
 const File = require("fs");
 const Inquirer = require("inquirer");
-const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -47,7 +46,6 @@ function continueAddingMembers() {
         if (response.continue) {
             addTeamMember();
         } else {
-            console.log(listOfEmployees);
             // Write to index.html
             File.writeFile( "./dist/index.html", Build.buildHTML(teamName, Build.buildCards(listOfEmployees)), (err) => {
                 err ? console.error(err) : console.log('Success!') // Error function
