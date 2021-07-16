@@ -6,10 +6,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Build = require("./src/buildHTML");
 
-// Data and containers
 let teamName;
-let accumulator = []; // Empty container to hold data between prompts
-let loopBack = true; // Loop management. Used for the add employee loop
 
 // Employee-based objects will be pushed into this container
 let listOfEmployees = [];
@@ -34,6 +31,9 @@ function askForTeamName() {
     });
 }
 
+// Press 'Y' to continue!
+// This just asks if the user wants to add another team member, and if so, it
+// runs addTeamMember again
 function continueAddingMembers() {
 
     Inquirer.prompt( [
@@ -44,10 +44,19 @@ function continueAddingMembers() {
         }
     ]).then( (response) => {
 
-        if (response.continue) addTeamMember();
+        if (response.continue) {
+            addTeamMember();
+        } else {
+            console.log(listOfEmployees);
+            // Write to index.html
+            File.writeFile( "./dist/index.html", Build.buildHTML(teamName, Build.buildCards(listOfEmployees)), (err) => {
+                err ? console.error(err) : console.log('Success!') // Error function
+            });
+        }
     });
 }
 
+// Adds a team member into the listOfEmployees based on user input
 function addTeamMember() {
 
     Inquirer.prompt( [
@@ -100,23 +109,22 @@ function addTeamMember() {
         // Add employee to listOfEmployees
         switch(response.role) {
 
-            case "Manager":;
-            break;
+            case "Manager":
+                listOfEmployees.push( new Manager(response.name, response.id, response.email, response.officeNumber));
+                break;
             
-            case "Engineer":;
-            break;
+            case "Engineer":
+                listOfEmployees.push( new Engineer(response.name, response.id, response.email, response.github));
+                break;
 
-            case "Intern":;
-            break;
+            case "Intern":
+                listOfEmployees.push( new Intern(response.name, response.id, response.email, response.school));
+                break;
         }
 
         continueAddingMembers();
     });
 }
-
-
-// .THEN
-// {fs Write File} ( buildHTML(teamName, buildCards(listOfEmployees)) );
 
 // Get the team name
 askForTeamName();

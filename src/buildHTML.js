@@ -10,10 +10,10 @@ function buildCards(employeeData) {
     let returnArray = [];
 
     // employeeData is an Array of Employee derivatives
-    for (employee in employeeData) {
+    employeeData.forEach((employee) => {
 
         // For the current Employee, get it's role
-        switch (getRole(employee)) {
+        switch (employee.getRole()) {
 
             case 'Manager':
                 returnArray += `Some HTML goes here.`;
@@ -27,7 +27,7 @@ function buildCards(employeeData) {
                 returnArray += `Some HTML goes here.`;
                 break;
         }
-    }
+    }) 
 }
 
 // This function blindly accepts an array of strings
