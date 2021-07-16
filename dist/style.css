@@ -1,0 +1,10 @@
+h1 {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.card {
+    padding-bottom: 20px;
+    background-color: #333;
+    color: #fff;
+}

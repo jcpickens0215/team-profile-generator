@@ -16,18 +16,44 @@ function buildCards(employeeData) {
         switch (employee.getRole()) {
 
             case 'Manager':
-                returnArray += `Some HTML goes here.`;
+                returnArray += `<div class="card">
+    <h3>${employee.getName()}</h3>
+    <h4>${employee.getID()}</h4>
+    <h4><a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></h4>
+    <h4>${employee.getOfficeNumber()}</h4>
+    <br>
+    <h5>Manager<h5>
+</div>
+`;
                 break;
             
             case 'Engineer':
-                returnArray += `Some HTML goes here.`;
+                returnArray += `<div class="card">
+    <h3>${employee.getName()}</h3>
+    <h4>${employee.getID()}</h4>
+    <h4><a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></h4>
+    <h4><a href="https://github.com/${employee.getGithub()}">${employee.getGithub()}</a></h4>
+    <br>
+    <h5>Engineer<h5>
+</div>
+`;
                 break;
 
             case 'Intern':
-                returnArray += `Some HTML goes here.`;
+                returnArray += `<div class="card">
+    <h3>${employee.getName()}</h3>
+    <h4>${employee.getID()}</h4>
+    <h4><a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></h4>
+    <h4>${employee.getSchool()}</h4>
+    <br>
+    <h5>Intern<h5>
+</div>
+`;
                 break;
         }
-    }) 
+    })
+
+    return returnArray;
 }
 
 // This function blindly accepts an array of strings
@@ -49,6 +75,7 @@ function buildHTML(teamName, inserts) {
     <title>${teamName}</title>
 </head>
 <body>
+    <h1>${teamName}</h1>
     ${inserts ? inserts.toString().split(",") : ''/* Only insert non-null data */}
 </body>
 </html>`;
